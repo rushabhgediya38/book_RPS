@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+
+    <title>Wisdom Pages: About Us</title>
+    <!-- Required meta tags always come first -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'sh_css/style.css' %}">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+               <span class="navbar-toggler-icon"></span>
+            </button>
+            <a class="navbar-brand mr-auto" href="{% url 'index' %}"><img src="{% static 'sh_images/logo.png' %}" height="30" width="35"></a>
+            <div class="collapse navbar-collapse" id="Navbar">
+               <ul class="navbar-nav mr-auto">
+                   <li class="nav-item"><a class="nav-link" href="{% url 'index' %}"><span class="fa fa-home fa-lg"></span> Home</a></li>
+                   <li class="nav-item active"><a class="nav-link" href="{% url 'about_us' %}"><span class="fa fa-info fa-lg"></span> About</a></li>
+                   <li class="nav-item"><a class="nav-link" href="{% url 'contact_us' %}"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+               </ul>
+            </div>
+        </div>
+   </nav>
+    <header class="jumbotron">
+        <div class="container">
+            <div class="row row-header">
+                <div class="col-12 col-sm-9">
+                    <h1>Wisdom Pages</h1>
+                    <p>We provide you the single medium for purchasing, selling, renting and reading books as well as enchance you with the updates of latest news and current affairs. You can explore different types of books as well as read them online and you can sell your books or rent them on our platform with complete reliability.</p>
+                </div>
+                <div class="col-12 col-sm-3 align-self-center">
+                    <img src="{% static 'sh_images/logo.png' %}" height="150" width="180">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="row row-header">
+            <div>
+                <ol class="col-12 breadcrumb">
+                    <li class="breadcrumb-item"><a href="/">Home</a></li>
+                    <li class="breadcrumb-item active">About us</li>
+                </ol>
+               <h3>About Us</h3>
+               <hr style="width: 1120px;">
+            </div>
+        </div>
+
+        <div class="row row-content">
+            <div class="col-sm-6">
+                <h2>Our History</h2>
+                <p>Started in 2020, Wisdom Pages is the fastest growing web application in the field of books and news. Promoting the concept of all-in-one i.e. all services at one place is the primary goal.</p>
+                <p>In this short period of time, Wisdom Pages has served and satisfied its consumers with reliable and astouding services.</p>
+            </div>
+            <div class="col-sm">
+                <div class="card">
+                    <h3 class="card-header bg-primary text-white">Facts at a Glance</h3>
+                    <div class="card-body">
+                        <dl class="row">
+                            <dt class="col-6">Started</dt>
+                            <dd class="col-6">3 Mar. 2020</dd>
+                            <dt class="col-6">Major Stake Holder</dt>
+                            <dd class="col-6">Wisdom Pages Inc.</dd>
+                        </dl>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12">
+                <div class="card card-body bg-light">
+                    <blockquote class="blockquote">
+                        <p class="mb-0">
+                            “There is no friend as loyal as a book.”
+                        </p>
+                        <footer class="blockquote-footer">Ernest Hemingway</footer>
+                    </blockquote>
+                </div>
+            </div>
+        </div>
+        <div class="row row-content">
+            <div class="col-auto">
+                <h2>Corporate Leadership</h2>
+                <div id="accordion">
+                    <div class="card">
+                        <div class="card-header" role="tab" id="peterhead">
+                            <h3 class="mb-0">
+                                <a data-toggle="collapse" data-target="#peter" class="text-dark">
+                                    Shreya Bhatt<small> Founder</small>
+                                </a>
+                            </h3>
+                        </div>
+                        <div role="tabpanel" class="tab-pane collapse show" id="peter" data-parent="#accordion">
+                            <div class="card-body">
+                                <p class="d-block d-sm-block">
+                                    Our founder, Shreya, credits her parents, friends and family for encouraging her to implement her ideas and supporting her for achieving great success in every aspect of life.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="row">             
+                <div class="col-4 offset-1 col-sm-2">
+                    <h5>Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'index' %}" class="text-light">Home</a></li>
+                        <li><a href="#" class="text-light">About</a></li>
+                        <li><a href="contactus.html" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-7 col-sm-5">
+                    <h5>You can reach us at:</h5>
+                    <address>
+                      <i class="fa fa-phone fa-lg"></i> +91 82123 45678<br>
+                      <i class="fa fa-fax fa-lg"></i>+91 85287 65431<br>
+                      <i class="fa fa-envelope fa-lg"></i><a href="mailto:wisdompages@books.net" class="text-light">wisdompages@books.net</a>
+                   </address>
+                </div>
+                <div class="col-12 col-sm-4 align-self-center">
+                    <div class="text-center">
+                        <a class="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i class="fa fa-facebook fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i class="fa fa-linkedin fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i class="fa fa-twitter fa-lg"></i></a>
+                        <a class="btn btn-social-icon btn-youtube" href="http://youtube.com/"><i class="fa fa-youtube-play fa-lg"></i></a>
+                        <a class="btn btn-social-icon" href="mailto:"><i class="fa fa-envelope fa-lg"></i></a>
+                    </div>
+                </div>
+           </div>
+           <div class="row justify-content-center">             
+                <div class="col-auto">
+                    <p>© Copyright 2020 Wisdom Pages</p>
+                </div>
+           </div>
+        </div>
+    </footer>
+
+    <script src="{% static 'node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+    <script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+    <script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

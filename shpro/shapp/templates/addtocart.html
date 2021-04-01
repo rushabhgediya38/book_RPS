@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Wisdom Pages: AddToCart</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'sh_css/style.css' %}">
+
+</head>
+
+
+<body>
+	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+				<span class="navbar-toggler-icon"></span>
+             </button>
+             <a class="navbar-brand mr-auto" href=""><img src="{% static 'sh_images/logo.png' %}" height="30" width="35"></a>
+             <div class="collapse navbar-collapse" id="Navbar">
+                  <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'book_post' %}"><span class="fa fa-sign-out"></span>Sell/Rent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><span class="fa fa-sign-out"></span>Sign out</a></li>
+                    </ul>
+                <form class="form-inline mr-auto" id="search" method="post" action="{% url 'search' %}">
+					{% csrf_token %}
+					<button type="submit"> <i class="fa fa-search" aria-hidden="true"></i></button>
+  					<input class="form-control form-control-sm ml-3 w-90" name="txtSearch" id="txtSearch" type="text" placeholder="Search" aria-label="Search">
+				</form>
+            </div>
+		</div>
+	</nav>
+
+    <div class="container">
+        <br><br><br><br>
+        <div class="text-center">
+            <h4>Product Added To Cart Successfully.</h4>
+            <a class="btn btn-primary" href="{% url 'mycart' %}" style="color:white;"> Show Your Product</a>
+            <a class="btn btn-danger" href="{% url 'wisdom_page' %}">Goto Shopping</a>
+        </div>
+    </div>
+
+
+
+	<script src="{% static 'node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+	<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'sh_js/script.js' %}"></script>
+</body>
+</html>

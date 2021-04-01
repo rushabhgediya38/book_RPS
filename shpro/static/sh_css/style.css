@@ -1,0 +1,63 @@
+.navbar-dark{
+	background-color: #173e43;
+}
+.jumbotron{
+	background-color: #3fb0ac;
+	padding: 70px 30px 70px 30px;
+	margin: 0px auto;
+	color: white;
+}
+.row-header{
+	/*margin-top: 30px;*/
+   	margin: 0px auto;
+    padding: 0px auto;
+}
+.footer{
+    background-color: #3fb0ac;
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+}
+.row-content{
+    margin: 0px auto;
+    padding: 20px 0px 20px 0px;
+    border-bottom: 1px ridge;
+    min-height: 200px;
+}
+body{
+    padding: 50px 0px 0px 0px;
+    z-index: 0;
+}
+.address{
+    font-size: 80%;
+    margin: 0px;
+    color: #0f0f0f;
+}
+.carousel .carousel-item {
+  height: 270px;
+}
+.carousel .carousel-item img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  min-height: 250px;
+}
+#carouselButton {
+  right: 0px;
+  position: absolute;
+  bottom: 0px;
+  z-index: 1;
+}
+.modal-header{
+  background-color: #173e43;
+  color: floralwhite;
+}
+a:hover{
+	text-decoration: none;
+}
+.centered {
+  position: absolute;
+  bottom: 8px;
+  color: white;
+  font-weight: bold;
+  z-index: 1;
+}

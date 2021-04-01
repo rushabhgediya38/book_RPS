@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Wisdom Pages: Welcome</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'sh_css/style.css' %}">
+
+    <style>
+      .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+      }
+
+      /* Clear floats after image containers */
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+
+</head>
+
+
+<body>
+	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+				<span class="navbar-toggler-icon"></span>
+             </button>
+             <a class="navbar-brand mr-auto" href=""><img src="{% static 'sh_images/logo.png' %}" height="30" width="35"></a>
+             <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'book_post' %}"><span class="fa fa-sign-out"></span>Sell/Rent</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><span class="fa fa-sign-out"></span>Sign out</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{% url 'user_posts' %}"><span class="fa fa-sign-out"></span> Your Books</a></li>
+
+                </ul>
+                <form class="form-inline mr-auto" id="search" method="post" action="{% url 'search' %}">
+					{% csrf_token %}
+					<button type="submit"> <i class="fa fa-search" aria-hidden="true"></i></button>
+  					<input class="form-control form-control-sm ml-3 w-90" name="txtSearch" id="txtSearch" type="text" placeholder="Search" aria-label="Search">
+				</form>
+                 <span class="navbar-text">
+                    <a role="button" href="{% url 'mycart' %}">
+                        <span class="fa fa-shopping-cart"></span> Cart
+                    </a>
+                </span>
+            </div>
+		</div>
+	</nav>
+
+
+	<div class="container">
+        <br>
+        {% include '_flash_messages.html' %}
+        <br>
+        <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'wisdom_page' %}">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">All Books</li>
+              </ol>
+            </nav>
+          <br>
+
+         <div class="text-center">
+            <span class="contact100-form-title">
+                <h4 class="font-weight-bold">All Books</h4>
+            </span>
+        </div>
+      <div class="row">
+
+      {% for i in qs %}
+        <div class="column">
+          <div class="card mt-4" style="width: 18rem;">
+            <img src="{{i.book_image1.url}}" width="287" height="300" data-href="{% url 'book_details' i.id %}">
+            <div class="card-body">
+              <h5 class="card-title">
+                  <a href="{% url 'book_details' i.id %}">{{i.book_name|slice:"0:24"}}...
+                  </a>
+              </h5>
+                <p class="card-text">
+                    <a href="{% url 'book_details' i.id %}">{{i.book_description|slice:"0:27"}}...
+                    </a>
+                </p>
+              <a href="{% url 'book_details' i.id %}" class="btn btn-primary">Details</a>
+
+                {% if i.author != user %}
+                    <a href="{% url 'addtocart' i.id %}" class="btn btn-danger">Add To Cart</a>
+                {% endif %}
+
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+
+      </div>
+
+    </div>
+
+	<script src="{% static 'node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+	<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'sh_js/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Wisdom Pages: Welcome</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'sh_css/style.css' %}">
+
+    <style>
+      .column {
+        float: left;
+        width: 33.33%;
+        padding: 5px;
+      }
+
+      /* Clear floats after image containers */
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+    </style>
+
+</head>
+
+
+<body>
+	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+				<span class="navbar-toggler-icon"></span>
+             </button>
+             <a class="navbar-brand mr-auto" href=""><img src="{% static 'sh_images/logo.png' %}" height="30" width="35"></a>
+             <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item"><a class="nav-link" href="{% url 'logout' %}"><span class="fa fa-sign-out"></span>Sign out</a></li>
+                </ul>
+
+                 <span class="navbar-text">
+                    <a role="button" href="{% url 'mycart' %}">
+                        <span class="fa fa-shopping-cart"></span> Cart
+                    </a>
+                </span>
+            </div>
+		</div>
+	</nav>
+
+	<div class="container">
+        <br><br>
+        <nav aria-label="breadcrumb">
+              <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'wisdom_page' %}">Home</a></li>
+                {% for i in qs %}
+                    {% if i.is_rent %}
+                        <li class="breadcrumb-item"><a href="{% url 'rent_lists' %}">Rent Books</a></li>
+                    {% else %}
+                        <li class="breadcrumb-item"><a href="{% url 'book_lists' %}">All Books</a></li>
+                    {% endif %}
+                <li class="breadcrumb-item active" aria-current="page">{{i.id}}</li>
+              {% endfor %}
+              </ol>
+            </nav>
+          <br>
+      <div class="row">
+
+          {% for i in qs %}
+                {% if i.book_image1 %}
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb mt-3">
+                    <a class="thumbnail">
+                        <img class="img-responsive" width="287" height="300" src="{{i.book_image1.url}}" alt="">
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if i.book_image2 %}
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb mt-3">
+                    <a class="thumbnail" href="#">
+                        <img class="img-responsive" width="287" height="300" src="{{i.book_image2.url}}" alt="">
+                    </a>
+                </div>
+                {% endif %}
+
+
+                {% if i.book_image3 %}
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb mt-3">
+                    <a class="thumbnail">
+                        <img class="img-responsive" width="287" height="300" src="{{i.book_image3.url}}" alt="">
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if i.book_image4 %}
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb mt-3">
+                    <a class="thumbnail">
+                        <img class="img-responsive" width="287" height="300" src="{{i.book_image4.url}}" alt="">
+                    </a>
+                </div>
+                {% endif %}
+
+                {% if i.book_image5 %}
+                <div class="col-lg-4 col-md-4 col-xs-4 thumb mt-3">
+                    <a class="thumbnail">
+                        <img class="img-responsive" width="287" height="300" src="{{i.book_image5.url}}" alt="">
+                    </a>
+                </div>
+                {% endif %}
+          <br><br>
+            <div class="container">
+                <div class="text-center">
+                <br>
+                  <h5 class="card-title">Name: {{i.book_name}}</h5><br>
+                  <p class="card-text">Author Name: {{i.book_author}}</p><br>
+                  <p class="card-text">Description: {{i.book_description}}</p><br>
+                  <p class="card-text">Price: &#8377;{{i.book_price}}</p><br>
+                    {% if i.is_rent %}
+                        <p class="card-text">Rent Days: {{i.rent_days}}</p><br>
+                    {% endif %}
+
+                {% if i.author != user %}
+                    <a href="{% url 'addtocart' i.id %}" class="btn btn-danger">Add To Cart</a>
+                {% else %}
+                    <a href="{% url 'user_book_update' i.id %}" class="btn btn-primary">Update</a>
+                    <a href="{% url 'user_book_delete' i.id %}" class="btn btn-danger">Delete</a>
+                {% endif %}
+
+                </div>
+            </div>
+          &emsp; &emsp;
+          {% endfor %}
+
+      </div>
+
+    </div>
+
+	<script src="{% static 'node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+	<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'sh_js/script.js' %}"></script>
+</body>
+</html>

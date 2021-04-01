@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+	<title>Wisdom Pages: Welcome</title>
+	<meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/font-awesome/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'node_modules/bootstrap-social/bootstrap-social.css' %}">
+    <link rel="stylesheet" href="{% static 'sh_css/style.css' %}">
+
+    <style>
+    .center_div{
+        margin: 0 auto;
+        width:80% /* value of your choice which suits your alignment */
+    }
+
+    #form1 {
+    display:none;
+    }
+
+    </style>
+</head>
+<body>
+	<nav class="navbar navbar-dark navbar-expand-sm fixed-top">
+		<div class="container">
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#Navbar">
+				<span class="navbar-toggler-icon"></span>
+             </button>
+             <a class="navbar-brand mr-auto" href="/"><img src="{% static 'sh_images/logo.png' %}" height="30" width="35"></a>
+             <div class="collapse navbar-collapse" id="Navbar">
+                <ul class="navbar-nav mr-auto">
+                     <li class="nav-item"><a class="nav-link" href="{% url 'wisdom_page' %}"><span class="fa fa-address-card fa-lg"></span>wisdom_page</a></li>
+                    <li class="nav-item active"><a class="nav-link" href=""><span class="fa fa-sign-out"></span>Sell/Rent</a></li>
+                </ul>
+
+					<span class="navbar-text">
+						<a role="button" id="logoutbutton" href="{% url 'logout' %}">
+							<span class="fa fa-sign-out"></span> Logout&emsp;
+						</a>
+					</span>
+            </div>
+		</div>
+	</nav>
+
+    <div class="container">
+        <div class="text-center">
+            <span class="contact100-form-title">
+                <span></span><br>
+                <span></span><br>
+                <h4 class="font-weight-bold">Sell/Rent Books</h4>
+            </span>
+        </div>
+
+        <div class="center_div">
+            <form method="post" action="{% url 'book_post' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+              <div class="form-group">
+                <label for="book_name">Book Name *</label>
+                <input type="text" required class="form-control" id="book_name" name="book_name" placeholder="Book Name">
+              </div>
+
+              <div class="form-group">
+                <label for="book_author">Author *</label>
+                <input type="text" required class="form-control" id="book_author" name="book_author" placeholder="Author Name">
+              </div>
+
+                <div class="form-group">
+                    <label for="book_description">Book Description *</label>
+                    <textarea required class="form-control" id="book_description" name="book_description" placeholder="Description" rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="book_picture1">Book Picture 1 *</label>
+                    <input required type="file" class="form-control-file" id="book_picture1" name="book_picture1">
+                </div>
+
+                <div class="form-group">
+                    <label for="book_picture2">Book Picture 2</label>
+                    <input type="file" class="form-control-file" id="book_picture2" name="book_picture2">
+                </div>
+
+                <div class="form-group">
+                    <label for="book_picture3">Book Picture 3</label>
+                    <input type="file" class="form-control-file" id="book_picture3" name="book_picture3">
+                </div>
+
+                <div class="form-group">
+                    <label for="book_picture4">Book Picture 4</label>
+                    <input type="file" class="form-control-file" id="book_picture4" name="book_picture4">
+                </div>
+
+                <div class="form-group">
+                    <label for="book_picture5">Book Picture 5</label>
+                    <input type="file" class="form-control-file" id="book_picture5" name="book_picture5">
+                </div>
+
+                <div class="form-group">
+                    <label for="book_price">Price *</label>
+                    <input type="number" min="20" oninput="this.value =
+                        !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" name="book_price" class="form-control" required id="book_price">
+                </div>
+
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input rent_book" name="is_rent_book" data-toggle="collapse" id="is_rent_book">
+                    <label class="form-check-label" for="is_rent_book">Rent This Book</label>
+                  </div>
+
+                <!-- <div class="modal-body">
+                    <div class="form-group" id="form1">
+                        <label for="book_days">Days </label>
+                        <input type="number" min="0" oninput="this.value =
+                        !!this.value && Math.abs(this.value) >= 0 ? Math.abs(this.value) : null" name="book_days" class="form-control" id="book_days">
+                    </div>
+                </div> -->
+                
+                <br>
+                <div class="modal-body" id="form1">
+                    <select class="form-select form-control" name="book_days" aria-label="Default select example">
+                        <option value="">Open this select menu</option>
+                        <option value="10">Ten(10) Days</option>
+                        <option value="15">Fifteen(15) Days</option>
+                        <option value="20">Twenty(20) Days</option>
+                      </select>
+                </div>
+                <br>
+
+              <button type="submit" class="btn btn-primary">Submit</button>
+                <br><br><br>
+            </form>
+        </div>
+
+
+    </div>
+
+
+
+	<script src="{% static 'node_modules/jquery/dist/jquery.slim.min.js' %}"></script>
+	<script src="{% static 'node_modules/popper.js/dist/umd/popper.min.js' %}"></script>
+	<script src="{% static 'node_modules/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'sh_js/script.js' %}"></script>
+
+
+<script>
+$(document).ready(function(){
+  $("#is_rent_book").click(function(){
+    $("#form1").toggle();
+  });
+});
+</script>
+
+</body>
+</html>
